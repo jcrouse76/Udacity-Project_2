@@ -15,4 +15,16 @@ formattedRole = HTMLheaderRole.replace("%data%", role);
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
+//String conversion - convert "audacity" to "Udacity"
+var firstString = "audacity";
+var convertedString = firstString.slice(1).charAt(0).toUpperCase() + firstString.substr(2);
 
+console.log(firstString);
+console.log(convertedString);
+
+
+//Array Example and append to the header
+var skills = ["HTML", "CSS", "Javascript",];
+
+$("#header").append(skills);
+console.log(skills.length);
