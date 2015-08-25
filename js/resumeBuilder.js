@@ -91,4 +91,33 @@ education["city"] = "Moorhead, MN";
 $("#main").append(work["position"]);
 $("#main").append(education.school);
 
+//Education object using JSON
+var education = {
+	"schools" : {
+		"name"	: "Northwest Technical College",
+		"city"	: "Moorhead, MN", 
+		"major"	: "Computer Programming", 
+		"years"	: "1999" 
+	},
+	"certifications" : [
+	{
+		"name"	: "University Of Washington",
+		"city"	: "Seattle, WA", 
+		"major"	: "C++ Certification",
+		"year"	: "2002"
+	},
+	{
+		"name"	: "Agile Center of Excellence",
+		"city"	: "Redmond, WA",
+		"major"	: "Agile Bronze Certification",
+		"year"	: "2012"
+	}
+	],
+	"onlinePrograms"	: {
+		"title"	: "Front End Web Developer Nanodegree",
+		"school"	: "Udactiy",
+		"year"	: "Currently Enrolled"
+	}
+}
+
 
