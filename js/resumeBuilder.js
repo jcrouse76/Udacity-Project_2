@@ -49,8 +49,7 @@ console.log(finalName);
 
 
 
-//Object Example
-
+//Bio Object example using Object Literal Notation
 var bio = {
 	"name"	: "Jason Crouse",
 	"role"	: "Senior Technical Team Lead",
@@ -72,5 +71,24 @@ $("#main").append(bio.contacts.Twitter);
 $("#main").append(bio.PictureURL);
 $("#main").append(bio.WelcomeMsg);
 $("#main").append(bio.Skills);
+
+
+//Work Object using dot notation
+var work = {};
+
+work.position = "Senior Technical Team Lead";
+work.employer = "AT&T";
+work.years = "2005 - Present";
+work.city = "Alpharetta, GA";
+
+//Education object using bracket notation
+var education = {};
+
+education["school"] = "Northwest Technical College";
+education["years"] = "1996-1999";
+education["city"] = "Moorhead, MN";
+
+$("#main").append(work["position"]);
+$("#main").append(education.school);
 
 
