@@ -28,3 +28,49 @@ var skills = ["HTML", "CSS", "Javascript",];
 
 $("#header").append(skills);
 console.log(skills.length);
+
+//Array example of string manipulation
+
+var name = "AlbERt EINstEiN";
+var finalName = name;
+
+console.log(name);
+console.log(finalName);
+
+var separator = " ";
+var myNameArray = finalName.split(separator);
+
+console.log(myNameArray[0]);
+console.log(myNameArray[1]);
+
+finalName = myNameArray[0].charAt(0).toUpperCase() + myNameArray[0].slice(1).toLowerCase()  + separator + myNameArray[1].toUpperCase();
+
+console.log(finalName);
+
+
+
+//Object Example
+
+var bio = {
+	"name"	: "Jason Crouse",
+	"role"	: "Senior Technical Team Lead",
+	"contacts" : {
+		"Phone"	: "206-419-7486",
+		"Email"	: "jcrouse76@hotmail.com",
+		"Twitter" 	: "crousejj"
+	},
+	"PictureURL"	: "images/fry.jpg",
+	"WelcomeMsg"	: "Welcome to My Bio!",
+	"Skills"		: skills
+};
+
+$("#main").append(bio.name);
+$("#main").append(bio.role);
+$("#main").append(bio.contacts.Phone);
+$("#main").append(bio.contacts.Email);
+$("#main").append(bio.contacts.Twitter);
+$("#main").append(bio.PictureURL);
+$("#main").append(bio.WelcomeMsg);
+$("#main").append(bio.Skills);
+
+
