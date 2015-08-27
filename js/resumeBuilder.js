@@ -158,4 +158,15 @@ var work = {
 	]
 }
 
+var projects = {
+	"projects"	: [
+		{
+			"title"	: "My Portfolio",
+			"dates"	: 2016,
+			"description"	: "My own portfolio website built using HTML5, Bootstrap, and CSS",
+			"images"	: ["www.espn.com", "www.google.com"]
+		}
+	]
+}
+
 
