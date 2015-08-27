@@ -77,22 +77,44 @@ var bio = {
 		"cellPhone"	: "206-419-7486",
 		"Email"	: "jcrouse76@hotmail.com",
 		"Twitter" 	: "crousejj",
-		"Facebook"	: "crousejj"
+		"Facebook"	: "crousejj",
+		"GitHub"	: "jcrouse76",
+		"Location"	: "Alpharetta, GA"
 	},
 	"PictureURL"	: "images/IMG_0339.jpg",
 	"WelcomeMsg"	: "Welcome to My Bio!",
 	"Skills"		: ["HTML", "Bootstrap", "CSS", "Javascript"]
 };
 
-$("#main").append(bio.name);
-$("#main").append(bio.role);
-$("#main").append(bio.contacts.cellPhone);
-$("#main").append(bio.contacts.Email);
-$("#main").append(bio.contacts.Twitter);
-$("#main").append(bio.contacts.Facebook);
-$("#main").append(bio.PictureURL);
-$("#main").append(bio.WelcomeMsg);
-$("#main").append(bio.Skills);
+//Use jquery replace method to replace HTMLheaderName/HTLMheaderRole with my name and role
+var formattedName = HTMLheaderName.replace("%data%", bio.name);						
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.cellPhone);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.Email);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.Twitter);
+var formattedFacebook = HTMLfacebook.replace("%data%", bio.contacts.Facebook);
+var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.GitHub);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.Location);
+var formattedPic = HTMLbioPic.replace("%data%", bio.PictureURL);
+var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
+var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
+
+
+
+//Use jquery append/prepend to add to the header section of the HTML Page
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#header").append(formattedMobile);
+$("#header").append(formattedEmail);
+$("#header").append(formattedTwitter);
+$("#header").append(formattedFacebook);
+$("#header").append(formattedGitHub);
+$("#header").append(formattedLocation);
+$("#header").append(formattedPic);
+$("#header").append(formattedWelcome);
+$("#header").append(formattedSkills);
+
+
 
 
 //Education object using JSON
