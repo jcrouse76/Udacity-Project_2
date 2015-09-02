@@ -97,9 +97,21 @@ var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.GitHub);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.Location);
 var formattedPic = HTMLbioPic.replace("%data%", bio.PictureURL);
 var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
-var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
+//var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
 
+//Check if Skills array is empty
+if(bio.Skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
 
+	var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
+	$("#skills").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
+	$("#skills").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
+	$("#skills").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
+	$("#skills").append(formattedSkills);
+};
 
 //Use jquery append/prepend to add to the header section of the HTML Page
 $("#header").prepend(formattedRole);
@@ -112,8 +124,6 @@ $("#header").append(formattedGitHub);
 $("#header").append(formattedLocation);
 $("#header").append(formattedPic);
 $("#header").append(formattedWelcome);
-$("#header").append(formattedSkills);
-
 
 
 
