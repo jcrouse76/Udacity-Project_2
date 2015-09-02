@@ -194,21 +194,25 @@ var work = {
 	]
 }
 
-for(job in work.jobs) {
+function displayWork() {
+
+	for(job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-	var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].city);
-	var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].years);	
-	var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].city);
+		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].years);	
+		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-	$(".work-entry:last").append(formattedEmployer + formattedWorkTitle);
-	$(".work-entry:last").append(formattedWorkLocation);
-	$(".work-entry:last").append(formattedWorkDates);
-	$(".work-entry:last").append(formattedWorkDescription);
+		$(".work-entry:last").append(formattedEmployer + formattedWorkTitle);
+		$(".work-entry:last").append(formattedWorkLocation);
+		$(".work-entry:last").append(formattedWorkDates);
+		$(".work-entry:last").append(formattedWorkDescription);
+	}
 }
 
+displayWork();
 var projects = {
 	"projects"	: [
 		{
