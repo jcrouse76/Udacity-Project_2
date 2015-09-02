@@ -167,27 +167,46 @@ var work = {
 			"position"	: "Senior Technical Team Lead",
 			"employer"	: "AT&T",
 			"years"	: "2013 - Present",
-			"city"	: "Alpharetta, GA"
+			"city"	: "Alpharetta, GA",
+			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Technical Team Lead",
 			"employer"	: "AT&T",
 			"years"	: "2009 - 2013",
-			"city"	: "Bothell, WA"
+			"city"	: "Bothell, WA",
+			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Senior IT Analyst",
 			"employer"	: "AT&T",
 			"years"	: 	"2005 - 2009",
-			"city"	: "Bothell, WA"
+			"city"	: "Bothell, WA",
+			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Software Test Engineer",
 			"employer"	: "Volt Services",
 			"years"	: 	"2000-2005",
-			"city"	: "Redmond, WA"
+			"city"	: "Redmond, WA",
+			"description"	: "To be added at a later time"
 		}
 	]
+}
+
+for(job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+	var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].city);
+	var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].years);	
+	var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+	$(".work-entry:last").append(formattedEmployer + formattedWorkTitle);
+	$(".work-entry:last").append(formattedWorkLocation);
+	$(".work-entry:last").append(formattedWorkDates);
+	$(".work-entry:last").append(formattedWorkDescription);
 }
 
 var projects = {
