@@ -70,9 +70,26 @@
 //var skills = ["HTML", "CSS", "Javascript",];
 
 //JQuery Event Handle. Will show in console the locaton of where user clicks on the screen
-$(document).click(function(loc) {
-	console.log("Location X: " + loc.pageX + " " + "Location Y: " + loc.pageY);
-});
+//$(document).click(function(loc) {
+//	console.log("Location X: " + loc.pageX + " " + "Location Y: " + loc.pageY);
+//});
+
+//$("#main").append(internationalizeButton);
+
+//Function that takes in a string and returns first letter of first name capitalized, rest lower case
+//and last name in all CAPS
+//function inName(iName) {
+//	var nameArray = iName.trim().split(" ");
+//	var firstName = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
+//	var lastName = nameArray[1].toUpperCase();
+
+//	console.log(firstName);
+//	console.log(lastName);
+//	return firstName + lastName;
+//}
+
+//Call inName function
+//inName("jason crouse");
 
 //Bio Object example using Object Literal Notation
 var bio = {
@@ -221,30 +238,44 @@ function displayWork() {
 }
 
 displayWork();
+
 var projects = {
 	"projects"	: [
 		{
 			"title"	: "My Portfolio",
 			"dates"	: 2016,
 			"description"	: "My own portfolio website built using HTML5, Bootstrap, and CSS",
-			"images"	: ["www.espn.com", "www.google.com"]
-		}
+			"images"	: ["images/fry.jpg"] //"images/IMG_0339.jpg"]
+			}
 	]
 }
 
-$("#main").append(internationalizeButton);
+//Encapsulate display function in the projects object
+projects.display = function() {
 
-function inName(iName) {
-	var nameArray = iName.trim().split(" ");
-	var firstName = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
-	var lastName = nameArray[1].toUpperCase();
+	for(project in projects.projects) {
+	$("#projects").append(HTMLprojectStart);
 
-	console.log(firstName);
-	console.log(lastName);
+	var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+	$(".project-entry:last").append(formattedProjectTitle);
 
-	return firstName + lastName;
+	var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+	$(".project-entry:last").append(formattedProjectDates);
+
+	var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+	$(".project-entry:last").append(formattedProjectDescription);
+	
+	if(projects.projects[project].images.length > 0) {
+		for(image in projects.projects[project].images) {
+			var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+			$(".project-entry:last").append(formattedProjectImages);
+			}
+		}
+	}
 }
+projects.display();
 
-inName("jason crouse");
+
+
 
 
