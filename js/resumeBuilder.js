@@ -101,7 +101,7 @@ var bio = {
 		"Twitter" 	: "crousejj",
 		"Facebook"	: "crousejj",
 		"GitHub"	: "jcrouse76",
-		"Location"	: "Alpharetta, GA"
+		"location"	: "Alpharetta, GA"
 	},
 	"PictureURL"	: "images/IMG_0339.jpg",
 	"WelcomeMsg"	: "Welcome to My Bio!",
@@ -116,7 +116,7 @@ var formattedEmail = HTMLemail.replace("%data%", bio.contacts.Email);
 var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.Twitter);
 var formattedFacebook = HTMLfacebook.replace("%data%", bio.contacts.Facebook);
 var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.GitHub);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.Location);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedPic = HTMLbioPic.replace("%data%", bio.PictureURL);
 var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
 //var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
@@ -154,24 +154,26 @@ if(bio.Skills.length > 0) {
 
 //Education object using JSON
 var education = {
-	"schools" : {
+	"schools" : [ 
+	{
 		"name"	: "Northwest Technical College",
-		"city"	: "Moorhead, MN", 
+		"location"	: "Moorhead, MN", 
 		"major"	: "Computer Programming", 
 		"years"	: "1999", 
 		"URL"	: "http://www.minnesota.edu/"
-	},
+	}
+	],
 	"certifications" : [
 	{
 		"name"	: "University Of Washington",
-		"city"	: "Seattle, WA", 
+		"location"	: "Seattle, WA", 
 		"major"	: "C++ Certification",
 		"year"	: "2002",
 		"URL"	: "http://www.pce.uw.edu/certificates/cpp-programming.html"
 	},
 	{
 		"name"	: "Agile Center of Excellence",
-		"city"	: "Redmond, WA",
+		"location"	: "Redmond, WA",
 		"major"	: "Agile Bronze Certification",
 		"year"	: "2012",
 		"URL"	: "http://agilemanifesto.org/"
@@ -192,28 +194,28 @@ var work = {
 			"position"	: "Senior Technical Team Lead",
 			"employer"	: "AT&T",
 			"years"	: "2013 - Present",
-			"city"	: "Alpharetta, GA",
+			"location"	: "Alpharetta, GA",
 			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Technical Team Lead",
 			"employer"	: "AT&T",
 			"years"	: "2009 - 2013",
-			"city"	: "Bothell, WA",
+			"location"	: "Bothell, WA",
 			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Senior IT Analyst",
 			"employer"	: "AT&T",
 			"years"	: 	"2005 - 2009",
-			"city"	: "Bothell, WA",
+			"location"	: "Bothell, WA",
 			"description"	: "To be added at a later time"
 		},
 		{
 			"position"	: "Software Test Engineer",
 			"employer"	: "Volt Services",
 			"years"	: 	"2000-2005",
-			"city"	: "Redmond, WA",
+			"location"	: "Redmond, WA",
 			"description"	: "To be added at a later time"
 		}
 	]
@@ -226,7 +228,7 @@ function displayWork() {
 
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].city);
+		var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 		var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].years);	
 		var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
@@ -275,7 +277,7 @@ projects.display = function() {
 }
 projects.display();
 
-
+$("#mapDiv").append(googleMap);
 
 
 
