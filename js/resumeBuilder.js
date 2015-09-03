@@ -69,6 +69,11 @@
 //Array for bio object
 //var skills = ["HTML", "CSS", "Javascript",];
 
+//JQuery Event Handle. Will show in console the locaton of where user clicks on the screen
+$(document).click(function(loc) {
+	console.log("Location X: " + loc.pageX + " " + "Location Y: " + loc.pageY);
+});
+
 //Bio Object example using Object Literal Notation
 var bio = {
 	"name"	: "Jason Crouse",
@@ -100,30 +105,33 @@ var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
 //var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
 
 //Check if Skills array is empty
-if(bio.Skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
 
-	var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
-	$("#skills").append(formattedSkills);
-	formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
-	$("#skills").append(formattedSkills);
-	formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
-	$("#skills").append(formattedSkills);
-	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
-	$("#skills").append(formattedSkills);
-};
 
 //Use jquery append/prepend to add to the header section of the HTML Page
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
-$("#header").append(formattedMobile);
-$("#header").append(formattedEmail);
-$("#header").append(formattedTwitter);
-$("#header").append(formattedFacebook);
-$("#header").append(formattedGitHub);
-$("#header").append(formattedLocation);
+$("#topContacts").append(formattedMobile);
+$("#topContacts").append(formattedEmail);
+$("#topContacts").append(formattedTwitter);
+$("#topContacts").append(formattedFacebook);
+$("#topContacts").append(formattedGitHub);
+$("#topContacts").append(formattedLocation);
 $("#header").append(formattedPic);
 $("#header").append(formattedWelcome);
+
+
+if(bio.Skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+
+	var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
+	$("#skillsH3").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
+	$("#skillsH3").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
+	$("#skillsH3").append(formattedSkills);
+	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
+	$("#skillsH3").append(formattedSkills);
+};
 
 
 
@@ -223,5 +231,20 @@ var projects = {
 		}
 	]
 }
+
+$("#main").append(internationalizeButton);
+
+function inName(iName) {
+	var nameArray = iName.trim().split(" ");
+	var firstName = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
+	var lastName = nameArray[1].toUpperCase();
+
+	console.log(firstName);
+	console.log(lastName);
+
+	return firstName + lastName;
+}
+
+inName("jason crouse");
 
 
