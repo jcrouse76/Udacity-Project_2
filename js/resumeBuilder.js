@@ -108,7 +108,9 @@ var bio = {
 	"Skills"		: ["HTML", "Bootstrap", "CSS", "Javascript"]
 };
 
-//Use jquery replace method to replace HTMLheaderName/HTLMheaderRole with my name and role
+//Encapsulate display function in the bio object
+bio.display = function() {
+	//Use jquery replace method to replace headers with formatted data
 var formattedName = HTMLheaderName.replace("%data%", bio.name);						
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.cellPhone);
@@ -119,10 +121,6 @@ var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.GitHub);
 var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 var formattedPic = HTMLbioPic.replace("%data%", bio.PictureURL);
 var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
-//var formattedSkills = HTMLskills.replace("%data%", bio.Skills);
-
-//Check if Skills array is empty
-
 
 //Use jquery append/prepend to add to the header section of the HTML Page
 $("#header").prepend(formattedRole);
@@ -136,7 +134,7 @@ $("#topContacts").append(formattedLocation);
 $("#header").append(formattedPic);
 $("#header").append(formattedWelcome);
 
-
+//Check if Skills array is empty
 if(bio.Skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 
@@ -148,7 +146,10 @@ if(bio.Skills.length > 0) {
 	$("#skillsH3").append(formattedSkills);
 	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
 	$("#skillsH3").append(formattedSkills);
-};
+	};
+}
+
+bio.display();
 
 
 
@@ -158,8 +159,9 @@ var education = {
 	{
 		"name"	: "Northwest Technical College",
 		"location"	: "Moorhead, MN", 
+		"degree"	: "Associates of Applied Science",
 		"major"	: "Computer Programming", 
-		"years"	: "1999", 
+		"years"	: "1997-1999", 
 		"URL"	: "http://www.minnesota.edu/"
 	}
 	],
@@ -168,24 +170,53 @@ var education = {
 		"name"	: "University Of Washington",
 		"location"	: "Seattle, WA", 
 		"major"	: "C++ Certification",
-		"year"	: "2002",
+		"years"	: "2002",
 		"URL"	: "http://www.pce.uw.edu/certificates/cpp-programming.html"
 	},
 	{
 		"name"	: "Agile Center of Excellence",
 		"location"	: "Redmond, WA",
 		"major"	: "Agile Bronze Certification",
-		"year"	: "2012",
+		"years"	: "2012",
 		"URL"	: "http://agilemanifesto.org/"
 	}
 	],
 	"onlinePrograms"	: {
 		"title"	: "Front-End Web Developer Nanodegree",
 		"school"	: "Udactiy",
-		"year"	: "Currently Enrolled",
+		"years"	: "Currently Enrolled",
 		"URL"	: "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 	}
 }
+
+education.display = function() {
+	for(school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+
+		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].years);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+		var formattedSchoolURL = HTMLschoolURL.replace("%data%", education.schools[school].URL);
+
+		$(".education-entry:last").append(formattedSchoolName);
+		$(".education-entry:last").append(formattedSchoolDegree);
+		$(".education-entry:last").append(formattedSchoolDates);
+		$(".education-entry:last").append(formattedSchoolMajor);
+		$(".education-entry:last").append(formattedSchoolURL);
+	}
+}
+
+education.display();
+
+//var HTMLschoolStart = '<div class="education-entry"></div>';
+//var HTMLschoolName = '<a href="#">%data%';
+//var HTMLschoolDegree = ' -- %data%</a>';
+//var HTMLschoolDates = '<div class="date-text">%data%</div>';
+//var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+//var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+//var HTMLschoolURL = '<br><a href="#">%data%</a>';
 
 //Work object using JSON
 var work = {
@@ -277,6 +308,7 @@ projects.display = function() {
 }
 projects.display();
 
+//Add map to the page
 $("#mapDiv").append(googleMap);
 
 
