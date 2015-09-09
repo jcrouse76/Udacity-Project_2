@@ -51,6 +51,19 @@ var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 var HTMLschoolURL = '<br><a href="#">%data%</a>';
 
+var HTMLcertificationStart = '<div class="certification-entry"></div>';
+var HTMLcertificationSchoolName = '<a href="#">%data%';
+var HTMLcertificationType = ' -- %data%</a>';
+var HTMLcertificationDates = '<div class="date-text">%data%</div>';
+var HTMLcertificationLocation = '<div class="location-text">%data%</div>';
+var HTMLcertificationSchoolURL = '<br><a href="#">%data%</a>';
+
+var HTMLonlineStart = '<div class="online-entry"></div>';
+var HTMLonlineSchoolName = '<a href="#">%data%';
+var HTMLonlineTitleType = ' -- %data%</a>';
+var HTMLonlineDates = '<div class="date-text">%data%</div>';
+var HTMLonlineSchoolURL = '<br><a href="#">%data%</a>';
+
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
@@ -128,12 +141,15 @@ function initializeMap() {
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
 
-    // iterates through school locations and appends each location to
+    // iterates through school locations in education object and appends each location to
     // the locations array
     for (var school in education.schools) {
       locations.push(education.schools[school].location);
     }
 
+   for (var school in education.certifications) {
+      locations.push(education.certifications[school].location);
+    }
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {

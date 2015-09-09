@@ -169,24 +169,26 @@ var education = {
 	{
 		"name"	: "University Of Washington",
 		"location"	: "Seattle, WA", 
-		"major"	: "C++ Certification",
+		"certification"	: "C++ Certification",
 		"years"	: "2002",
 		"URL"	: "http://www.pce.uw.edu/certificates/cpp-programming.html"
 	},
 	{
 		"name"	: "Agile Center of Excellence",
 		"location"	: "Redmond, WA",
-		"major"	: "Agile Bronze Certification",
+		"certification"	: "Agile Bronze Certification",
 		"years"	: "2012",
 		"URL"	: "http://agilemanifesto.org/"
 	}
 	],
-	"onlinePrograms"	: {
+	"onlinePrograms"	: [
+	{
 		"title"	: "Front-End Web Developer Nanodegree",
 		"school"	: "Udactiy",
 		"years"	: "Currently Enrolled",
 		"URL"	: "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 	}
+	],
 }
 
 education.display = function() {
@@ -204,19 +206,48 @@ education.display = function() {
 		$(".education-entry:last").append(formattedSchoolDegree);
 		$(".education-entry:last").append(formattedSchoolDates);
 		$(".education-entry:last").append(formattedSchoolMajor);
+		$(".education-entry:last").append(formattedSchoolLocation);
 		$(".education-entry:last").append(formattedSchoolURL);
+	}
+	for(cert in education.certifications) {
+		$("#education").append(HTMLcertificationStart);
+
+		var formattedCertificationSchoolName = HTMLcertificationSchoolName.replace("%data%", education.certifications[cert].name);
+		var formattedCertificationCertification = HTMLcertificationType.replace("%data%", education.certifications[cert].certification);
+		var formattedCertificationDates = HTMLcertificationDates.replace("%data%", education.certifications[cert].years);
+		var formattedCertificationLocation = HTMLcertificationLocation.replace("%data%", education.certifications[cert].location);
+		var formattedCertificationSchoolURL = HTMLcertificationSchoolURL.replace("%data%", education.certifications[cert].URL);
+
+		$(".education-entry:last").append(formattedCertificationSchoolName);
+		$(".education-entry:last").append(formattedCertificationCertification);
+		$(".education-entry:last").append(formattedCertificationDates);
+		$(".education-entry:last").append(formattedCertificationLocation);
+		$(".education-entry:last").append(formattedCertificationSchoolURL);
+	}
+
+	for(online in education.onlinePrograms) {
+		$("#education").append(HTMLonlineStart);
+
+		var formattedOnlineSchoolName = HTMLonlineSchoolName.replace("%data%", education.onlinePrograms[online].school);
+		var formattedOnlineTitleType = HTMLonlineTitleType.replace("%data%", education.onlinePrograms[online].title);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlinePrograms[online].years);
+		var formattedOnlineURL = HTMLonlineSchoolURL.replace("%data%", education.onlinePrograms[online].URL);
+
+		$(".education-entry:last").append(formattedOnlineSchoolName);
+		$(".education-entry:last").append(formattedOnlineTitleType);
+		$(".education-entry:last").append(formattedOnlineDates);
+		$(".education-entry:last").append(formattedOnlineURL);
 	}
 }
 
+var HTMLonlineStart = '<div class="online-entry"></div>';
+var HTMLonlineSchoolName = '<a href="#">%data%';
+var HTMLonlineTitleType = ' -- %data%</a>';
+var HTMLcertificationDates = '<div class="date-text">%data%</div>';
+var HTMLonlineSchoolURL = '<br><a href="#">%data%</a>';
+
 education.display();
 
-//var HTMLschoolStart = '<div class="education-entry"></div>';
-//var HTMLschoolName = '<a href="#">%data%';
-//var HTMLschoolDegree = ' -- %data%</a>';
-//var HTMLschoolDates = '<div class="date-text">%data%</div>';
-//var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-//var HTMLschoolMajor = '<em><br>Major: %data%</em>';
-//var HTMLschoolURL = '<br><a href="#">%data%</a>';
 
 //Work object using JSON
 var work = {
@@ -252,7 +283,7 @@ var work = {
 	]
 }
 
-function displayWork() {
+work.displayWork = function() {
 
 	for(job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
@@ -270,7 +301,7 @@ function displayWork() {
 	}
 }
 
-displayWork();
+work.displayWork();
 
 var projects = {
 	"projects"	: [
@@ -306,6 +337,7 @@ projects.display = function() {
 		}
 	}
 }
+
 projects.display();
 
 //Add map to the page
