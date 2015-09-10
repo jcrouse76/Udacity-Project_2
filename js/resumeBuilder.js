@@ -131,8 +131,10 @@ $("#topContacts").append(formattedTwitter);
 $("#topContacts").append(formattedFacebook);
 $("#topContacts").append(formattedGitHub);
 $("#topContacts").append(formattedLocation);
-$("#header").append(formattedPic);
+$("#header").prepend(formattedPic);
 $("#header").append(formattedWelcome);
+
+/*
 
 //Check if Skills array is empty
 if(bio.Skills.length > 0) {
@@ -147,6 +149,9 @@ if(bio.Skills.length > 0) {
 	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
 	$("#skillsH3").append(formattedSkills);
 	};
+
+*/
+
 }
 
 bio.display();

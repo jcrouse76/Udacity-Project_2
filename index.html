@@ -42,6 +42,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
 
+  <!-- D3 Lib File for tree -->
+  <script src="js/d3.min.js"></script>
+
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
@@ -89,13 +92,13 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   dynamically when this website, index.html, is opened.
   -->
   <script src="js/resumeBuilder.js"></script>
-
+  <script src="js/chart.js"></script> 
 
   <!--
   These scripts are written in JavaScript. You'll be breaking them down as part of
   a quiz. Essentially, the next few lines are checking to see if you have not
   changed each section of the resume. If you have not made any changes to a section
-  of the resume, then that part of the resume does not show up. More on this in the
+  of the resume, ten that part of the resume does not show up. More on this in the
   course.
   -->
 
@@ -136,94 +139,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('mapDiv').style.backgroundColor= '#000';
     }
   </script>
-
-<!-- Playing around with D3.js -->
-
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
- 
-var diameter = 960;
- 
-var tree = d3.layout.tree()
-    .size([360, diameter / 2 - 120])
-    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
- 
-var diagonal = d3.svg.diagonal.radial()
-    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
- 
-var svg = d3.select("body").append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter - 150)
-  .append("g")
-    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
- 
-var root = {
- "name": "Skills",
-    "children": [
-    {
-        "name": "Programming",
-        "children": [
-            {"name" : "JavaScript", "size": 3938},
-            {"name" : "C++", "size": 3812},
-            {"name" : "HTML", "size": 6714},
-            {"name" : "CSS", "size": 3000},
-        ]
-    },
-    {
-        "name": "Operating Systems",
-        "children": [
-            {"name" : "Mac", "size": 3534},
-            {"name" : "Windows", "size": 5731},
-            {"name" : "Linux", "size": 7840},
-        ]
-    },
-        {
-        "name": "Telefony",
-        "children": [
-            {"name" : "Value#", "size": 3534},
-            {"name" : "Value#", "size": 5731},
-            {"name" : "Value#", "size": 7840},
-        ]
-    },
-            {
-        "name": "QA",
-        "children": [
-            {"name" : "Value#", "size": 3534},
-            {"name" : "Value#", "size": 5731},
-            {"name" : "Value#", "size": 7840},
-        ]
-    },
-  ]
-};
- 
-  var nodes = tree.nodes(root),
-      links = tree.links(nodes);
- 
-  var link = svg.selectAll(".link")
-      .data(links)
-    .enter().append("path")
-      .attr("class", "link")
-      .attr("d", diagonal);
- 
-  var node = svg.selectAll(".node")
-      .data(nodes)
-    .enter().append("g")
-      .attr("class", "node")
-      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
- 
-  node.append("circle")
-      .attr("r", 4.5);
- 
-  node.append("text")
-      .attr("dy", ".31em")
-      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-     .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-     .text(function(d) { return d.name; });
- 
-d3.select(self.frameElement).style("height", diameter - 150 + "px");
- 
-</script>
-
 
 </body>
 </html>

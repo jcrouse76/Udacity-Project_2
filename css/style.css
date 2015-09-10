@@ -216,17 +216,21 @@ span {
 
 /* Style for Radial Reingold–Tilford Tree  */
 .node circle {
-  fill: #fff;
+  fill: black;
   stroke: steelblue;
   stroke-width: 1.5px;
 }
  
 .node {
   font: 10px sans-serif;
+  stroke: white;
+  stroke-width: .5px;
 }
  
 .link {
   fill: none;
-  stroke: #ccc;
+  stroke: #F5AE23;
   stroke-width: 1.5px;
 }
+
+
