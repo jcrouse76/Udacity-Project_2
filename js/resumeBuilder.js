@@ -328,7 +328,7 @@ var projects = {
 			"title"	: "My Portfolio",
 			"dates"	: 2016,
 			"description"	: "My own portfolio website built using HTML5, Bootstrap, and CSS",
-			"images"	: ["images/fry.jpg"] //"images/IMG_0339.jpg"]
+			"images"	: ["images/P1_Portfolio.png"]
 			}
 	]
 }
