@@ -262,28 +262,42 @@ var work = {
 			"employer"	: "AT&T",
 			"years"	: "2013 - Present",
 			"location"	: "Alpharetta, GA",
-			"description"	: "To be added at a later time"
+			"description"	: "Interview and select employees, allocate proper staffing levels, \
+			supervise direct reports and scrum team, identify areas for improvement, aid in development \
+			of training plans, ensure Company policies are being enforced, conduct long-range planning \
+			for team, establish team goals, establish relationships with vendors, act as main contact \
+			/ith other organizations, assist in business strategy, assist in translation of technical requirements \
+			to application specific requirements, ensure projects are delivered on time and within budget. "
 		},
 		{
-			"position"	: "Technical Team Lead",
+			"position"	: "Technical Team Lead - Mobility Quality Assurance",
 			"employer"	: "AT&T",
 			"years"	: "2009 - 2013",
 			"location"	: "Bothell, WA",
-			"description"	: "To be added at a later time"
+			"description"	: "Allocate QA resources to scrum team, provide project estimates based on high level requirements, \
+			 work with architecture, development, and project management teams on project strategy, work closely with Senior \
+			 Technical Director on staffing levels, complete A&D reviews for 6 direct reports, assist in QA Testing, analyze \
+			 business requirements."
 		},
 		{
 			"position"	: "Senior IT Analyst",
 			"employer"	: "AT&T",
 			"years"	: 	"2005 - 2009",
 			"location"	: "Bothell, WA",
-			"description"	: "To be added at a later time"
+			"description"	: "Create and execute functional and regression QA test cases for Mobility IVR projects, open defects in HP \
+			Quality Center and ensure defects are fixed in a timely fashion based on severity level, report trouble areas to \
+			Senior Technical Directors of QA and Development organizations, review business requirements and identify \
+			functional requirement gaps."
 		},
 		{
 			"position"	: "Software Test Engineer",
 			"employer"	: "Volt Services",
 			"years"	: 	"2000-2005",
 			"location"	: "Redmond, WA",
-			"description"	: "To be added at a later time"
+			"description"	: "Create and execute test cases built from application design requirements on Windows XP and \
+			Windows Server platforms, open defects and ensure fixes are delivered in expected timeframe based on severity, \
+			assist Software Design Test Engineers on requirements and defects. Collaberate and communicate with team members \
+			on functionality to eliminate repetitive testing."
 		}
 	]
 }
