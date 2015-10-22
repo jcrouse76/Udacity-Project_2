@@ -36,19 +36,19 @@ var root = {
         ]
     },
         {
-        "name": "Telefony",
+        "name": "Telefony Platforms",
         "children": [
-            {"name" : "Value#", "size": 3534},
-            {"name" : "Value#", "size": 5731},
-            {"name" : "Value#", "size": 7840},
+            {"name" : "Genesys", "size": 3534},
+            {"name" : "Cisco", "size": 5731},
+            {"name" : "Unix", "size": 7840},
         ]
     },
             {
         "name": "QA",
         "children": [
-            {"name" : "Value#", "size": 3534},
-            {"name" : "Value#", "size": 5731},
-            {"name" : "Value#", "size": 7840},
+            {"name" : "Automated Test Tools", "size": 3534},
+            {"name" : "Enhancement", "size": 5731},
+            {"name" : "Regression", "size": 7840},
         ]
     },
   ]
