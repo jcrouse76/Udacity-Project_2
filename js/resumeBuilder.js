@@ -363,4 +363,15 @@ projects.display();
 $("#mapDiv").append(googleMap);
 
 
+//jQuery listener to change background color of Work Experience section
+//on mouseover
+        $('#workExperience').bind("mouseover", function(){
+            var color  = $(this).css("background-color");
+            $(this).css("background-color", "#EEE8AA");
+
+            $(this).bind("mouseout", function(){
+                $(this).css("background", color);
+            })    
+        })    
+
 
