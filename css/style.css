@@ -202,3 +202,8 @@ span {
     stroke: #F5AE23;
     stroke-width: 1.5px;
 }
+
+/* Style for Google Info Window */
+.infoTest {
+    font-size: 20px;
+}
