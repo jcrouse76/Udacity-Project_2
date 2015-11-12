@@ -183,17 +183,25 @@ function initializeMap() {
 
     //Added sayings for cities for info window
     var saying;
-    if(name == "Alpharetta, GA, USA") {
+    var infoImage;
+    if(name.match(/alpharetta/gi)) {
       saying = "Rise Up!";
-    } else if (name == "Seattle, WA, USA") {
+      infoImage = '<IMG BORDER="0" ALIGN="Right" SRC="images/ATL.jpg">';
+    } else if (name.match(/seattle|redmond|bothell?/gi)) {
       saying = "Go Hawks!";
+      infoImage = '<IMG BORDER="0" ALIGN="Right" SRC="images/needle.jpg">';
+    } else if (name.match(/moorhead/gi)) {
+      saying = "Yeah, you betcha!";
+      infoImage = '<IMG BORDER="0" ALIGN="Right" SRC="images/moorhead.jpg">';
     }
+
 
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     //**************TO BE DONE************************
-    var contentString = '<div id="content" class="infoTest">' + name + '</div>' + '<div id="content">' + saying + '</div>'
+    var contentString = '<div id="infoContent" class="infoWindowContent">' + '<div id="heading" class="infoWindowCity">' 
+    + name + '</div>' + '<div id="infoBody">' + saying + infoImage + '</div>' + '</div>'
 
     var infoWindow = new google.maps.InfoWindow({
       content: contentString
