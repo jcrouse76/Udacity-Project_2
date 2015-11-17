@@ -1,3 +1,4 @@
+/*
 $("#header").append(HTMLskillsStart);
 
 var diameter = 720;
@@ -12,7 +13,7 @@ var diagonal = d3.svg.diagonal.radial()
 var svg = d3.select("div#header").append("svg")
     .attr("width", diameter)
     .attr("height", diameter) /* original code was diameter - 150 */
-  .append("g")
+/* .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
  
 var root = {
@@ -79,4 +80,4 @@ var root = {
      .text(function(d) { return d.name; });
  
 d3.select(self.frameElement).style("height", diameter - 150 + "px");
- 
+/*
