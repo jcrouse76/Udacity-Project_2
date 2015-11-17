@@ -202,21 +202,17 @@ span {
     stroke: #F5AE23;
     stroke-width: 1.5px;
 }
-
 /* CSS Styling for Google Info Window */
 
 .infoTest {
     font-size: 20px;
 }
-
 .cityName {
-    color:  black;
+    color: black;
 }
-
 .citySaying {
     color: red;
 }
-
 .infoWindowPic {
     align: middle;
     height: 200px;
