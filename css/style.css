@@ -207,13 +207,15 @@ span {
     font-size: 20px;
 }
 .cityName {
-    color: black;
+    color: #000000;
 }
 .citySaying {
-    color: red;
+    color: #DC143C;
 }
 .infoWindowPic {
-    align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 200px;
     width: 300px;
 }
