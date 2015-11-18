@@ -144,16 +144,22 @@ function initializeMap() {
         // iterates through school locations in education object and appends each location to
         // the locations array
         for (var school in education.schools) {
-            locations.push(education.schools[school].location);
+            if (education.schools.length > 0) {
+                locations.push(education.schools[school].location);
+            }
         }
 
-        for (var school in education.certifications) {
-            locations.push(education.certifications[school].location);
+        for (school in education.certifications) {
+            if (education.certifications.length > 0) {
+                locations.push(education.certifications[school].location);
+            }
         }
         // iterates through work locations and appends each location to
         // the locations array
         for (var job in work.jobs) {
-            locations.push(work.jobs[job].location);
+            if (work.jobs.length > 0) {
+                locations.push(work.jobs[job].location);
+            }
         }
 
         return locations;
@@ -202,7 +208,7 @@ function initializeMap() {
             '<h2 id="infoCityName" class="cityName">' + name + '</h2>' +
             '</div>' + '<div id="infoBody">' +
             '<h3 id=infoCitySaying" class="citySaying">' + saying + '</h3>' + infoImage +
-            '</div>' + '</div>'
+            '</div>' + '</div>';
 
         var infoWindow = new google.maps.InfoWindow({
             content: contentString
@@ -244,15 +250,18 @@ function initializeMap() {
 
         // Iterates through the array of locations, creates a search object for each location
         for (var place in locations) {
-
-            // the search request object
-            var request = {
-                query: locations[place]
-            };
-
-            // Actually searches the Google Maps API for location data and runs the callback
-            // function with the search results after each search.
-            service.textSearch(request, callback);
+            if (locations.length > 0) {
+                // the search request object
+                var request = {
+                    query: locations[place]
+                };
+                // Actually searches the Google Maps API for location data and runs the callback
+                // function with the search results after each search.
+                /* Received a warning from jshint that request was used out of scope
+                   since this code was provided as part of lesson, disabling the warning */
+                /*jshint funcscope:true*/
+                service.textSearch(request, callback);
+            }
         }
     }
 
