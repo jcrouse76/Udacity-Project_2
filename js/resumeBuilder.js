@@ -1,70 +1,73 @@
-//------------------Classroom Examples Start----------------------------//
-//$("#main").append("Jason Crouse");
-//var awesomeThoughts = "I am Jason Crouse and I am AWESOME!";
-//Declare Variables
-//var name = "Jason Crouse";
-//var role = "Senior Technical Team Lead";
-//var formattedName;
-//var formattedRole;
-//Use jquery replace method to replace HTMLheaderName/HTLMheaderRole with my name and role
-//formattedName = HTMLheaderName.replace("%data%", name);						
-//formattedRole = HTMLheaderRole.replace("%data%", role);
-//Use jquery append/prepend to add to the header section of the HTML Page
-//$("#header").prepend(formattedRole);
-//$("#header").prepend(formattedName);
-//String conversion - convert "audacity" to "Udacity"
-//var firstString = "audacity";
-//var convertedString = firstString.slice(1).charAt(0).toUpperCase() + firstString.substr(2);
-//console.log(firstString);
-//console.log(convertedString);
-//Array Example and append to the header
-//var skills = ["HTML", "CSS", "Javascript",];
-//$("#header").append(skills);
-//console.log(skills.length);
-//Array example of string manipulation
-//var name = "AlbERt EINstEiN";
-//var finalName = name;
-//console.log(name);
-//console.log(finalName);
-//var separator = " ";
-//var myNameArray = finalName.split(separator);
-//console.log(myNameArray[0]);
-//console.log(myNameArray[1]);
-//finalName = myNameArray[0].charAt(0).toUpperCase() + myNameArray[0].slice(1).toLowerCase()  + separator + myNameArray[1].toUpperCase();
-//console.log(finalName);
-//Work Object using dot notation
-//var work = {};
-//work.position = "Senior Technical Team Lead";
-//work.employer = "AT&T";
-//work.years = "2005 - Present";
-//work.city = "Alpharetta, GA";
-//Education object using bracket notation
-//var education = {};
-//education["school"] = "Northwest Technical College";
-//education["years"] = "1996-1999";
-//education["city"] = "Moorhead, MN";
-//$("#main").append(work["position"]);
-//$("#main").append(education.school);
-//Array for bio object
-//var skills = ["HTML", "CSS", "Javascript",];
-//JQuery Event Handle. Will show in console the locaton of where user clicks on the screen
-//$(document).click(function(loc) {
-//	console.log("Location X: " + loc.pageX + " " + "Location Y: " + loc.pageY);
-//});
-//$("#main").append(internationalizeButton);
-//Function that takes in a string and returns first letter of first name capitalized, rest lower case
-//and last name in all CAPS
-//function inName(iName) {
-//	var nameArray = iName.trim().split(" ");
-//	var firstName = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
-//	var lastName = nameArray[1].toUpperCase();
-//	console.log(firstName);
-//	console.log(lastName);
-//	return firstName + lastName;
-//}
-//Call inName function
-//inName("jason crouse");
-//------------------Classroom Examples Finish----------------------------//
+/* ------------------Classroom Examples Start----------------------------
+$("#main").append("Jason Crouse");
+var awesomeThoughts = "I am Jason Crouse and I am AWESOME!";
+Declare Variables
+var name = "Jason Crouse";
+var role = "Senior Technical Team Lead";
+var formattedName;
+var formattedRole;
+Use jquery replace method to replace HTMLheaderName/HTLMheaderRole with my name and role
+formattedName = HTMLheaderName.replace("%data%", name);                       
+formattedRole = HTMLheaderRole.replace("%data%", role);
+Use jquery append/prepend to add to the header section of the HTML Page
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+String conversion - convert "audacity" to "Udacity"
+var firstString = "audacity";
+var convertedString = firstString.slice(1).charAt(0).toUpperCase() + firstString.substr(2);
+console.log(firstString);
+console.log(convertedString);
+Array Example and append to the header
+var skills = ["HTML", "CSS", "Javascript",];
+$("#header").append(skills);
+console.log(skills.length);
+Array example of string manipulation
+var name = "AlbERt EINstEiN";
+var finalName = name;
+console.log(name);
+console.log(finalName);
+var separator = " ";
+var myNameArray = finalName.split(separator);
+console.log(myNameArray[0]);
+console.log(myNameArray[1]);
+finalName = myNameArray[0].charAt(0).toUpperCase() + myNameArray[0].slice(1).toLowerCase()  + separator + myNameArray[1].toUpperCase();
+console.log(finalName);
+Work Object using dot notation
+var work = {};
+work.position = "Senior Technical Team Lead";
+work.employer = "AT&T";
+work.years = "2005 - Present";
+work.city = "Alpharetta, GA";
+Education object using bracket notation
+var education = {};
+education["school"] = "Northwest Technical College";
+education["years"] = "1996-1999";
+education["city"] = "Moorhead, MN";
+$("#main").append(work["position"]);
+$("#main").append(education.school);
+Array for bio object
+var skills = ["HTML", "CSS", "Javascript",];
+JQuery Event Handle. Will show in console the locaton of where user clicks on the screen
+$(document).click(function(loc) {
+  console.log("Location X: " + loc.pageX + " " + "Location Y: " + loc.pageY);
+});
+$("#main").append(internationalizeButton);
+Function that takes in a string and returns first letter of first name capitalized, rest lower case
+and last name in all CAPS
+function inName(iName) {
+  var nameArray = iName.trim().split(" ");
+  var firstName = nameArray[0].charAt(0).toUpperCase() + nameArray[0].slice(1);
+  var lastName = nameArray[1].toUpperCase();
+  console.log(firstName);
+  console.log(lastName);
+  return firstName + lastName;
+}
+Call inName function
+inName("jason crouse");
+
+------------------Classroom Examples Finish---------------------------- */
+
+
 //Bio Object example using Object Literal Notation
 var bio = {
     "name": "Jason Crouse",
@@ -112,21 +115,21 @@ bio.display = function() {
 
     //Check if Skills array is empty
     if(bio.Skills.length > 0) {
-    	$("#header").append(HTMLskillsStart);
+        $("#header").append(HTMLskillsStart);
 
-    	var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
-    	$("#skillsH3").append(formattedSkills);
-    	formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
-    	$("#skillsH3").append(formattedSkills);
-    	formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
-    	$("#skillsH3").append(formattedSkills);
-    	formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
-    	$("#skillsH3").append(formattedSkills);
-    	};
+        var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
+        $("#skillsH3").append(formattedSkills);
+        };
 
     */
 
-}
+};
 
 bio.display();
 
@@ -161,10 +164,10 @@ var education = {
         "years": "Currently Enrolled",
         "URL": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }],
-}
+};
 
 education.display = function() {
-    for (school in education.schools) {
+    for (var school in education.schools) {
         $("#education").append(HTMLschoolStart);
 
         var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -181,7 +184,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedSchoolLocation);
         $(".education-entry:last").append(formattedSchoolURL);
     }
-    for (cert in education.certifications) {
+    for (var cert in education.certifications) {
         $("#education").append(HTMLcertificationStart);
 
         var formattedCertificationSchoolName = HTMLcertificationSchoolName.replace("%data%", education.certifications[cert].name);
@@ -197,7 +200,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedCertificationSchoolURL);
     }
 
-    for (online in education.onlinePrograms) {
+    for (var online in education.onlinePrograms) {
         $("#education").append(HTMLonlineStart);
 
         var formattedOnlineSchoolName = HTMLonlineSchoolName.replace("%data%", education.onlinePrograms[online].school);
@@ -210,11 +213,11 @@ education.display = function() {
         $(".education-entry:last").append(formattedOnlineDates);
         $(".education-entry:last").append(formattedOnlineURL);
     }
-}
+};
 
 education.display();
 
-
+/*jshint multistr: true */
 //Work object using JSON
 var work = {
     "jobs": [{
@@ -223,44 +226,44 @@ var work = {
         "years": "2013 - Present",
         "location": "Alpharetta, GA",
         "description": "Interview and select employees, allocate proper staffing levels, \
-			supervise direct reports and scrum team, identify areas for improvement, aid in development \
-			of training plans, ensure Company policies are being enforced, conduct long-range planning \
-			for team, establish team goals, establish relationships with vendors, act as main contact \
-			/ith other organizations, assist in business strategy, assist in translation of technical requirements \
-			to application specific requirements, ensure projects are delivered on time and within budget. "
+            supervise direct reports and scrum team, identify areas for improvement, aid in development \
+            of training plans, ensure Company policies are being enforced, conduct long-range planning \
+            for team, establish team goals, establish relationships with vendors, act as main contact \
+            ith other organizations, assist in business strategy, assist in translation of technical requirements \
+            to application specific requirements, ensure projects are delivered on time and within budget."
     }, {
         "position": "Technical Team Lead - Mobility Quality Assurance",
         "employer": "AT&T",
         "years": "2009 - 2013",
         "location": "Bothell, WA",
         "description": "Allocate QA resources to scrum team, provide project estimates based on high level requirements, \
-			 work with architecture, development, and project management teams on project strategy, work closely with Senior \
-			 Technical Director on staffing levels, complete A&D reviews for 6 direct reports, assist in QA Testing, analyze \
-			 business requirements."
+             work with architecture, development, and project management teams on project strategy, work closely with Senior \
+             Technical Director on staffing levels, complete A&D reviews for 6 direct reports, assist in QA Testing, analyze \
+             business requirements."
     }, {
         "position": "Senior IT Analyst",
         "employer": "AT&T",
         "years": "2005 - 2009",
         "location": "Bothell, WA",
         "description": "Create and execute functional and regression QA test cases for Mobility IVR projects, open defects in HP \
-			Quality Center and ensure defects are fixed in a timely fashion based on severity level, report trouble areas to \
-			Senior Technical Directors of QA and Development organizations, review business requirements and identify \
-			functional requirement gaps."
+            Quality Center and ensure defects are fixed in a timely fashion based on severity level, report trouble areas to \
+            Senior Technical Directors of QA and Development organizations, review business requirements and identify \
+            functional requirement gaps."
     }, {
         "position": "Software Test Engineer",
         "employer": "Volt Services",
         "years": "2000-2005",
         "location": "Redmond, WA",
         "description": "Create and execute test cases built from application design requirements on Windows XP and \
-			Windows Server platforms, open defects and ensure fixes are delivered in expected timeframe based on severity, \
-			assist Software Design Test Engineers on requirements and defects. Collaberate and communicate with team members \
-			on functionality to eliminate repetitive testing."
+            Windows Server platforms, open defects and ensure fixes are delivered in expected timeframe based on severity, \
+            assist Software Design Test Engineers on requirements and defects. Collaberate and communicate with team members \
+            on functionality to eliminate repetitive testing."
     }]
-}
+};
 
 work.displayWork = function() {
 
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
 
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -274,7 +277,7 @@ work.displayWork = function() {
         $(".work-entry:last").append(formattedWorkDates);
         $(".work-entry:last").append(formattedWorkDescription);
     }
-}
+};
 
 work.displayWork();
 
@@ -285,12 +288,12 @@ var projects = {
         "description": "My own portfolio website built using HTML5, Bootstrap, and CSS",
         "images": ["images/P1_Portfolio.png"]
     }]
-}
+};
 
 //Encapsulate display function in the projects object
 projects.display = function() {
 
-    for (project in projects.projects) {
+    for (var project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
 
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -303,13 +306,13 @@ projects.display = function() {
         $(".project-entry:last").append(formattedProjectDescription);
 
         if (projects.projects[project].images.length > 0) {
-            for (image in projects.projects[project].images) {
+            for (var image in projects.projects[project].images) {
                 var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
                 $(".project-entry:last").append(formattedProjectImages);
             }
         }
     }
-}
+};
 
 projects.display();
 
@@ -324,8 +327,8 @@ $('#workExperience').bind("mouseover", function() {
 
     $(this).bind("mouseout", function() {
         $(this).css("background", color);
-    })
-})
+    });
+});
 
 
 //Javascript for Radial Reingold–Tilford Tree 
@@ -422,7 +425,7 @@ var node = svg.selectAll(".node")
     .attr("class", "node")
     .attr("transform", function(d) {
         return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-    })
+    });
 
 node.append("circle")
     .attr("r", 4.5);
