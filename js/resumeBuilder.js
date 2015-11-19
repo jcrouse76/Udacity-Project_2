@@ -8,8 +8,8 @@ var role = "Senior Technical Team Lead";
 var formattedName;
 var formattedRole;
 Use jquery replace method to replace HTMLheaderName/HTLMheaderRole with my name and role
-formattedName = HTMLheaderName.replace("%data%", name);                       
-formattedRole = HTMLheaderRole.replace("%data%", role);
+formattedName = HTMLheaderName.replace(data, name);                       
+formattedRole = HTMLheaderRole.replace(data, role);
 Use jquery append/prepend to add to the header section of the HTML Page
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
@@ -67,6 +67,12 @@ Call inName function
 inName("jason crouse");
 
 ------------------Classroom Examples Finish---------------------------- */
+//Declare some global variables
+var data = "%data%";
+var $header = $("#header");
+var $topContacts = $("#topContacts");
+var $footerContacts = $("#footerContacts");
+
 //Bio Object example using Object Literal Notation
 var bio = {
     "name": "Jason Crouse",
@@ -81,56 +87,177 @@ var bio = {
     },
     "biopic": "images/IMG_0339.jpg",
     "welcomeMessage": "Welcome to My Bio!",
-    "skills": ["HTML", "Bootstrap", "CSS", "Javascript"]
+    "skills": ["HTML", "Bootstrap", "CSS", "Javascript", "jQuery", "SVG"]
 };
 
 //Encapsulate display function in the bio object
 bio.display = function() {
     //Use jquery replace method to replace headers with formatted data
-    var formattedName = HTMLheaderName.replace("%data%", bio.name);
-    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-    //var formattedFacebook = HTMLfacebook.replace("%data%", bio.contacts.Facebook);
-    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
-    var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedName = HTMLheaderName.replace(data, bio.name);
+    var formattedRole = HTMLheaderRole.replace(data, bio.role);
+    var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
+    var formattedTwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
+    //var formattedFacebook = HTMLfacebook.replace(data, bio.contacts.Facebook);
+    var formattedGitHub = HTMLgithub.replace(data, bio.contacts.github);
+    var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
+    var formattedPic = HTMLbioPic.replace(data, bio.biopic);
+    var formattedWelcome = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
 
     //Use jquery append/prepend to add to the header section of the HTML Page
-    $("#header").prepend(formattedRole);
-    $("#header").prepend(formattedName);
-    $("#topContacts").append(formattedMobile);
-    $("#topContacts").append(formattedEmail);
-    $("#topContacts").append(formattedTwitter);
-    //$("#topContacts").append(formattedFacebook);
-    $("#topContacts").append(formattedGitHub);
-    $("#topContacts").append(formattedLocation);
-    $("#header").prepend(formattedPic);
-    $("#header").append(formattedWelcome);
-    $("#letsConnect").append(formattedMobile);
-    $("#letsConnect").append(formattedEmail);
-    $("#letsConnect").append(formattedTwitter);
-    $("#letsConnect").append(formattedGitHub);
-    $("#letsConnect").append(formattedLocation);
+    $header.prepend(formattedRole);
+    $header.prepend(formattedName);
+    $topContacts.append(formattedMobile);
+    $topContacts.append(formattedEmail);
+    $topContacts.append(formattedTwitter);
+    //$topContacts.append(formattedFacebook);
+    $topContacts.append(formattedGitHub);
+    $topContacts.append(formattedLocation);
+    $header.prepend(formattedPic);
+    $header.append(formattedWelcome);
+    $footerContacts.append(formattedMobile);
+    $footerContacts.append(formattedEmail);
+    $footerContacts.append(formattedTwitter);
+    $footerContacts.append(formattedGitHub);
+    $footerContacts.append(formattedLocation);
 
 
-    /* Used Radial Reingold–Tilford Tree to display skills
+    if (bio.skills.length > 0) {
+        $("#header").append(HTMLskillsStart);
 
-        if(bio.Skills.length > 0) {
-            $("#header").append(HTMLskillsStart);
+        var formattedSkills = HTMLskills.replace(data, bio.skills[0]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace(data, bio.skills[1]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace(data, bio.skills[2]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace(data, bio.skills[3]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace(data, bio.skills[4]);
+        $("#skillsH3").append(formattedSkills);
+        formattedSkills = HTMLskills.replace(data, bio.skills[5]);
+        $("#skillsH3").append(formattedSkills);
+    }
 
-            var formattedSkills = HTMLskills.replace("%data%", bio.Skills[0]);
-            $("#skillsH3").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.Skills[1]);
-            $("#skillsH3").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.Skills[2]);
-            $("#skillsH3").append(formattedSkills);
-            formattedSkills = HTMLskills.replace("%data%", bio.Skills[3]);
-            $("#skillsH3").append(formattedSkills);
-            };
-    */
+    //Javascript for Radial Reingold–Tilford Tree 
+
+    $header.append(HTMLskillsTree);
+
+    var diameter = 720;
+
+    var tree = d3.layout.tree()
+        .size([360, diameter / 2 - 50])
+        .separation(function(a, b) {
+            return (a.parent == b.parent ? 1 : 2) / a.depth;
+        });
+
+    var diagonal = d3.svg.diagonal.radial()
+        .projection(function(d) {
+            return [d.y, d.x / 180 * Math.PI];
+        });
+
+    var svg = d3.select("div#header").append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter) /* original code was diameter - 150 */
+        .append("g")
+        .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+
+    var root = {
+        "name": "Skills",
+        "children": [{
+            "name": "Programming",
+            "children": [{
+                "name": "JavaScript",
+                "size": 3938
+            }, {
+                "name": "Bootstrap",
+                "size": 3812
+            }, {
+                "name": "HTML",
+                "size": 6714
+            }, {
+                "name": "CSS",
+                "size": 3000
+            }, {
+                "name": "jQuery",
+                "size": 3000
+            }, {
+                "name": "SVG",
+                "size": 3000
+            }, ]
+        }, {
+            "name": "Operating Systems",
+            "children": [{
+                "name": "Mac",
+                "size": 3534
+            }, {
+                "name": "Windows",
+                "size": 5731
+            }, {
+                "name": "Linux",
+                "size": 7840
+            }, ]
+        }, {
+            "name": "Telefony Platforms",
+            "children": [{
+                "name": "Genesys",
+                "size": 3534
+            }, {
+                "name": "Cisco",
+                "size": 5731
+            }, {
+                "name": "Unix",
+                "size": 7840
+            }, ]
+        }, {
+            "name": "QA",
+            "children": [{
+                "name": "Automated Test Tools",
+                "size": 3534
+            }, {
+                "name": "Enhancement",
+                "size": 5731
+            }, {
+                "name": "Regression",
+                "size": 7840
+            }, ]
+        }, ]
+    };
+
+    var nodes = tree.nodes(root),
+        links = tree.links(nodes);
+
+    var link = svg.selectAll(".link")
+        .data(links)
+        .enter().append("path")
+        .attr("class", "link")
+        .attr("d", diagonal);
+
+    var node = svg.selectAll(".node")
+        .data(nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) {
+            return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+        });
+
+    node.append("circle")
+        .attr("r", 4.5);
+
+    node.append("text")
+        .attr("dy", ".31em")
+        .attr("text-anchor", function(d) {
+            return d.x < 180 ? "start" : "end";
+        })
+        .attr("transform", function(d) {
+            return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+        })
+        .text(function(d) {
+            return d.name;
+        });
+
+    d3.select(self.frameElement).style("height", diameter - 150 + "px");
+
 };
 
 bio.display();
@@ -147,7 +274,9 @@ var education = {
         "dates": 1999,
         "url": "http://www.minnesota.edu/"
     }],
-    /*"certifications": [{
+    /* Added some personalization to resume. Removing due to 
+    rubric restrictions on the JSON object
+    "certifications": [{
         "name": "University Of Washington",
         "location": "Seattle, WA",
         "certification": "C++ Certification",
@@ -159,13 +288,14 @@ var education = {
         "certification": "Agile Bronze Certification",
         "years": "2012",
         "URL": "http://agilemanifesto.org/"
-    }],*/
+    }],
+    */
     "onlineCourses": [{
         "title": "Front-End Web Developer Nanodegree",
         "school": "Udactiy",
         "date": 2016,
         "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
-    }],
+    }]
 };
 
 education.display = function() {
@@ -173,12 +303,12 @@ education.display = function() {
         if (education.schools.length > 0) {
             $("#education").append(HTMLschoolStart);
 
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-            var formattedSchoolURL = HTMLschoolURL.replace("%data%", education.schools[school].url);
+            var formattedSchoolName = HTMLschoolName.replace(data, education.schools[school].name);
+            var formattedSchoolDegree = HTMLschoolDegree.replace(data, education.schools[school].degree);
+            var formattedSchoolDates = HTMLschoolDates.replace(data, education.schools[school].dates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace(data, education.schools[school].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace(data, education.schools[school].majors);
+            var formattedSchoolURL = HTMLschoolURL.replace(data, education.schools[school].url);
 
             $(".education-entry:last").append(formattedSchoolName);
             $(".education-entry:last").append(formattedSchoolDegree);
@@ -187,33 +317,34 @@ education.display = function() {
             $(".education-entry:last").append(formattedSchoolLocation);
             $(".education-entry:last").append(formattedSchoolURL);
         }
-    }  /*
-    for (var cert in education.certifications) {
-        if (education.certifications.length > 0) {
-            $("#education").append(HTMLcertificationStart);
+    }
+    /*
+        for (var cert in education.certifications) {
+            if (education.certifications.length > 0) {
+                $("#education").append(HTMLcertificationStart);
 
-            var formattedCertificationSchoolName = HTMLcertificationSchoolName.replace("%data%", education.certifications[cert].name);
-            var formattedCertificationCertification = HTMLcertificationType.replace("%data%", education.certifications[cert].certification);
-            var formattedCertificationDates = HTMLcertificationDates.replace("%data%", education.certifications[cert].years);
-            var formattedCertificationLocation = HTMLcertificationLocation.replace("%data%", education.certifications[cert].location);
-            var formattedCertificationSchoolURL = HTMLcertificationSchoolURL.replace("%data%", education.certifications[cert].URL);
+                var formattedCertificationSchoolName = HTMLcertificationSchoolName.replace(data, education.certifications[cert].name);
+                var formattedCertificationCertification = HTMLcertificationType.replace(data, education.certifications[cert].certification);
+                var formattedCertificationDates = HTMLcertificationDates.replace(data, education.certifications[cert].years);
+                var formattedCertificationLocation = HTMLcertificationLocation.replace(data, education.certifications[cert].location);
+                var formattedCertificationSchoolURL = HTMLcertificationSchoolURL.replace(data, education.certifications[cert].URL);
 
-            $(".education-entry:last").append(formattedCertificationSchoolName);
-            $(".education-entry:last").append(formattedCertificationCertification);
-            $(".education-entry:last").append(formattedCertificationDates);
-            $(".education-entry:last").append(formattedCertificationLocation);
-            $(".education-entry:last").append(formattedCertificationSchoolURL);
-        }
-    } */
+                $(".education-entry:last").append(formattedCertificationSchoolName);
+                $(".education-entry:last").append(formattedCertificationCertification);
+                $(".education-entry:last").append(formattedCertificationDates);
+                $(".education-entry:last").append(formattedCertificationLocation);
+                $(".education-entry:last").append(formattedCertificationSchoolURL);
+            }
+        } */
 
     for (var online in education.onlineCourses) {
         if (education.onlineCourses.length > 0) {
             $("#education").append(HTMLonlineStart);
 
-            var formattedOnlineSchoolName = HTMLonlineSchoolName.replace("%data%", education.onlinePrograms[online].school);
-            var formattedOnlineTitleType = HTMLonlineTitleType.replace("%data%", education.onlinePrograms[online].title);
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlinePrograms[online].date);
-            var formattedOnlineURL = HTMLonlineSchoolURL.replace("%data%", education.onlinePrograms[online].url);
+            var formattedOnlineSchoolName = HTMLonlineSchoolName.replace(data, education.onlineCourses[online].school);
+            var formattedOnlineTitleType = HTMLonlineTitleType.replace(data, education.onlineCourses[online].title);
+            var formattedOnlineDates = HTMLonlineDates.replace(data, education.onlineCourses[online].date);
+            var formattedOnlineURL = HTMLonlineSchoolURL.replace(data, education.onlineCourses[online].url);
 
             $(".education-entry:last").append(formattedOnlineSchoolName);
             $(".education-entry:last").append(formattedOnlineTitleType);
@@ -275,11 +406,11 @@ work.displayWork = function() {
         if (work.jobs.length > 0) {
             $("#workExperience").append(HTMLworkStart);
 
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+            var formattedEmployer = HTMLworkEmployer.replace(data, work.jobs[job].employer);
+            var formattedWorkTitle = HTMLworkTitle.replace(data, work.jobs[job].title);
+            var formattedWorkLocation = HTMLworkLocation.replace(data, work.jobs[job].location);
+            var formattedWorkDates = HTMLworkDates.replace(data, work.jobs[job].dates);
+            var formattedWorkDescription = HTMLworkDescription.replace(data, work.jobs[job].description);
 
             $(".work-entry:last").append(formattedEmployer + formattedWorkTitle);
             $(".work-entry:last").append(formattedWorkLocation);
@@ -287,6 +418,17 @@ work.displayWork = function() {
             $(".work-entry:last").append(formattedWorkDescription);
         }
     }
+
+    //Playing around with jQuery Events
+    $('#workExperience').bind("mouseover", function() {
+        var color = $(this).css("background-color");
+        $(this).css("background-color", "#EEE8AA");
+
+        $(this).bind("mouseout", function() {
+            $(this).css("background", color);
+        });
+
+    });
 };
 
 work.displayWork();
@@ -294,7 +436,7 @@ work.displayWork();
 var projects = {
     "projects": [{
         "title": "My Portfolio",
-        "dates": 2016,
+        "dates": "2015",
         "description": "My own portfolio website built using HTML5, Bootstrap, and CSS",
         "images": ["images/P1_Portfolio.png"]
     }]
@@ -307,19 +449,19 @@ projects.display = function() {
         if (projects.projects.length > 0) {
             $("#projects").append(HTMLprojectStart);
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+            var formattedProjectTitle = HTMLprojectTitle.replace(data, projects.projects[project].title);
             $(".project-entry:last").append(formattedProjectTitle);
 
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+            var formattedProjectDates = HTMLprojectDates.replace(data, projects.projects[project].dates);
             $(".project-entry:last").append(formattedProjectDates);
 
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+            var formattedProjectDescription = HTMLprojectDescription.replace(data, projects.projects[project].description);
             $(".project-entry:last").append(formattedProjectDescription);
 
             if (projects.projects[project].images.length > 0) {
                 for (var image in projects.projects[project].images) {
                     if (projects.projects[project].images.length > 0) {
-                        var formattedProjectImages = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                        var formattedProjectImages = HTMLprojectImage.replace(data, projects.projects[project].images[image]);
                         $(".project-entry:last").append(formattedProjectImages);
                     }
                 }
@@ -332,128 +474,3 @@ projects.display();
 
 //Add map to the page
 $("#mapDiv").append(googleMap);
-
-
-//Playing around with jQuery Events
-$('#workExperience').bind("mouseover", function() {
-    var color = $(this).css("background-color");
-    $(this).css("background-color", "#EEE8AA");
-
-    $(this).bind("mouseout", function() {
-        $(this).css("background", color);
-    });
-});
-
-
-//Javascript for Radial Reingold–Tilford Tree 
-
-$("#header").append(HTMLskillsStart);
-
-var diameter = 720;
-
-var tree = d3.layout.tree()
-    .size([360, diameter / 2 - 50])
-    .separation(function(a, b) {
-        return (a.parent == b.parent ? 1 : 2) / a.depth;
-    });
-
-var diagonal = d3.svg.diagonal.radial()
-    .projection(function(d) {
-        return [d.y, d.x / 180 * Math.PI];
-    });
-
-var svg = d3.select("div#header").append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter) /* original code was diameter - 150 */
-    .append("g")
-    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
-
-var root = {
-    "name": "Skills",
-    "children": [{
-        "name": "Programming",
-        "children": [{
-            "name": "JavaScript",
-            "size": 3938
-        }, {
-            "name": "C++",
-            "size": 3812
-        }, {
-            "name": "HTML",
-            "size": 6714
-        }, {
-            "name": "CSS",
-            "size": 3000
-        }, ]
-    }, {
-        "name": "Operating Systems",
-        "children": [{
-            "name": "Mac",
-            "size": 3534
-        }, {
-            "name": "Windows",
-            "size": 5731
-        }, {
-            "name": "Linux",
-            "size": 7840
-        }, ]
-    }, {
-        "name": "Telefony Platforms",
-        "children": [{
-            "name": "Genesys",
-            "size": 3534
-        }, {
-            "name": "Cisco",
-            "size": 5731
-        }, {
-            "name": "Unix",
-            "size": 7840
-        }, ]
-    }, {
-        "name": "QA",
-        "children": [{
-            "name": "Automated Test Tools",
-            "size": 3534
-        }, {
-            "name": "Enhancement",
-            "size": 5731
-        }, {
-            "name": "Regression",
-            "size": 7840
-        }, ]
-    }, ]
-};
-
-var nodes = tree.nodes(root),
-    links = tree.links(nodes);
-
-var link = svg.selectAll(".link")
-    .data(links)
-    .enter().append("path")
-    .attr("class", "link")
-    .attr("d", diagonal);
-
-var node = svg.selectAll(".node")
-    .data(nodes)
-    .enter().append("g")
-    .attr("class", "node")
-    .attr("transform", function(d) {
-        return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-    });
-
-node.append("circle")
-    .attr("r", 4.5);
-
-node.append("text")
-    .attr("dy", ".31em")
-    .attr("text-anchor", function(d) {
-        return d.x < 180 ? "start" : "end";
-    })
-    .attr("transform", function(d) {
-        return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
-    })
-    .text(function(d) {
-        return d.name;
-    });
-
-d3.select(self.frameElement).style("height", diameter - 150 + "px");
