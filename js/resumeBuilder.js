@@ -72,16 +72,16 @@ var bio = {
     "name": "Jason Crouse",
     "role": "Senior Technical Team Lead",
     "contacts": {
-        "cellPhone": "206-419-7486",
-        "Email": "jcrouse76@hotmail.com",
-        "Twitter": "crousejj",
-        "Facebook": "crousejj",
-        "GitHub": "jcrouse76",
+        "mobile": "206-419-7486",
+        "email": "jcrouse76@hotmail.com",
+        "github": "jcrouse76",
+        "twitter": "crousejj",
+        //"Facebook": "crousejj",
         "location": "Alpharetta, GA"
     },
-    "PictureURL": "images/IMG_0339.jpg",
-    "WelcomeMsg": "Welcome to My Bio!",
-    "Skills": ["HTML", "Bootstrap", "CSS", "Javascript"]
+    "biopic": "images/IMG_0339.jpg",
+    "welcomeMessage": "Welcome to My Bio!",
+    "skills": ["HTML", "Bootstrap", "CSS", "Javascript"]
 };
 
 //Encapsulate display function in the bio object
@@ -89,14 +89,14 @@ bio.display = function() {
     //Use jquery replace method to replace headers with formatted data
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.cellPhone);
-    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.Email);
-    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.Twitter);
-    var formattedFacebook = HTMLfacebook.replace("%data%", bio.contacts.Facebook);
-    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.GitHub);
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    //var formattedFacebook = HTMLfacebook.replace("%data%", bio.contacts.Facebook);
+    var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formattedPic = HTMLbioPic.replace("%data%", bio.PictureURL);
-    var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.WelcomeMsg);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
     //Use jquery append/prepend to add to the header section of the HTML Page
     $("#header").prepend(formattedRole);
@@ -104,11 +104,16 @@ bio.display = function() {
     $("#topContacts").append(formattedMobile);
     $("#topContacts").append(formattedEmail);
     $("#topContacts").append(formattedTwitter);
-    $("#topContacts").append(formattedFacebook);
+    //$("#topContacts").append(formattedFacebook);
     $("#topContacts").append(formattedGitHub);
     $("#topContacts").append(formattedLocation);
     $("#header").prepend(formattedPic);
     $("#header").append(formattedWelcome);
+    $("#letsConnect").append(formattedMobile);
+    $("#letsConnect").append(formattedEmail);
+    $("#letsConnect").append(formattedTwitter);
+    $("#letsConnect").append(formattedGitHub);
+    $("#letsConnect").append(formattedLocation);
 
 
     /* Used Radial Reingold–Tilford Tree to display skills
@@ -138,11 +143,11 @@ var education = {
         "name": "Northwest Technical College",
         "location": "Moorhead, MN",
         "degree": "Associates of Applied Science",
-        "major": "Computer Programming",
-        "years": "1997-1999",
-        "URL": "http://www.minnesota.edu/"
+        "majors": "Computer Programming",
+        "dates": 1999,
+        "url": "http://www.minnesota.edu/"
     }],
-    "certifications": [{
+    /*"certifications": [{
         "name": "University Of Washington",
         "location": "Seattle, WA",
         "certification": "C++ Certification",
@@ -154,12 +159,12 @@ var education = {
         "certification": "Agile Bronze Certification",
         "years": "2012",
         "URL": "http://agilemanifesto.org/"
-    }],
-    "onlinePrograms": [{
+    }],*/
+    "onlineCourses": [{
         "title": "Front-End Web Developer Nanodegree",
         "school": "Udactiy",
-        "years": "Currently Enrolled",
-        "URL": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        "date": 2016,
+        "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }],
 };
 
@@ -170,10 +175,10 @@ education.display = function() {
 
             var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
             var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].years);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-            var formattedSchoolURL = HTMLschoolURL.replace("%data%", education.schools[school].URL);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+            var formattedSchoolURL = HTMLschoolURL.replace("%data%", education.schools[school].url);
 
             $(".education-entry:last").append(formattedSchoolName);
             $(".education-entry:last").append(formattedSchoolDegree);
@@ -182,7 +187,7 @@ education.display = function() {
             $(".education-entry:last").append(formattedSchoolLocation);
             $(".education-entry:last").append(formattedSchoolURL);
         }
-    }
+    }  /*
     for (var cert in education.certifications) {
         if (education.certifications.length > 0) {
             $("#education").append(HTMLcertificationStart);
@@ -199,16 +204,16 @@ education.display = function() {
             $(".education-entry:last").append(formattedCertificationLocation);
             $(".education-entry:last").append(formattedCertificationSchoolURL);
         }
-    }
+    } */
 
-    for (var online in education.onlinePrograms) {
-        if (education.onlinePrograms.length > 0) {
+    for (var online in education.onlineCourses) {
+        if (education.onlineCourses.length > 0) {
             $("#education").append(HTMLonlineStart);
 
             var formattedOnlineSchoolName = HTMLonlineSchoolName.replace("%data%", education.onlinePrograms[online].school);
             var formattedOnlineTitleType = HTMLonlineTitleType.replace("%data%", education.onlinePrograms[online].title);
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlinePrograms[online].years);
-            var formattedOnlineURL = HTMLonlineSchoolURL.replace("%data%", education.onlinePrograms[online].URL);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlinePrograms[online].date);
+            var formattedOnlineURL = HTMLonlineSchoolURL.replace("%data%", education.onlinePrograms[online].url);
 
             $(".education-entry:last").append(formattedOnlineSchoolName);
             $(".education-entry:last").append(formattedOnlineTitleType);
@@ -224,9 +229,9 @@ education.display();
 //Work object using JSON
 var work = {
     "jobs": [{
-        "position": "Senior Technical Team Lead",
+        "title": "Senior Technical Team Lead",
         "employer": "AT&T",
-        "years": "2013 - Present",
+        "dates": "2013 - Present",
         "location": "Alpharetta, GA",
         "description": "Interview and select employees, allocate proper staffing levels, \
             supervise direct reports and scrum team, identify areas for improvement, aid in development \
@@ -235,27 +240,27 @@ var work = {
             ith other organizations, assist in business strategy, assist in translation of technical requirements \
             to application specific requirements, ensure projects are delivered on time and within budget."
     }, {
-        "position": "Technical Team Lead - Mobility Quality Assurance",
+        "title": "Technical Team Lead - Mobility Quality Assurance",
         "employer": "AT&T",
-        "years": "2009 - 2013",
+        "dates": "2009 - 2013",
         "location": "Bothell, WA",
         "description": "Allocate QA resources to scrum team, provide project estimates based on high level requirements, \
              work with architecture, development, and project management teams on project strategy, work closely with Senior \
              Technical Director on staffing levels, complete A&D reviews for 6 direct reports, assist in QA Testing, analyze \
              business requirements."
     }, {
-        "position": "Senior IT Analyst",
+        "title": "Senior IT Analyst",
         "employer": "AT&T",
-        "years": "2005 - 2009",
+        "dates": "2005 - 2009",
         "location": "Bothell, WA",
         "description": "Create and execute functional and regression QA test cases for Mobility IVR projects, open defects in HP \
             Quality Center and ensure defects are fixed in a timely fashion based on severity level, report trouble areas to \
             Senior Technical Directors of QA and Development organizations, review business requirements and identify \
             functional requirement gaps."
     }, {
-        "position": "Software Test Engineer",
+        "title": "Software Test Engineer",
         "employer": "Volt Services",
-        "years": "2000-2005",
+        "dates": "2000-2005",
         "location": "Redmond, WA",
         "description": "Create and execute test cases built from application design requirements on Windows XP and \
             Windows Server platforms, open defects and ensure fixes are delivered in expected timeframe based on severity, \
@@ -271,9 +276,9 @@ work.displayWork = function() {
             $("#workExperience").append(HTMLworkStart);
 
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
             var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].years);
+            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
             var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
             $(".work-entry:last").append(formattedEmployer + formattedWorkTitle);
